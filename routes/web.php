@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomePageController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +15,16 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('dang-nhap', function(){
+    if (Auth::check()) {
+        return redirect()->route('home');
+    } else return view('auth.login');
+})->name('login-page');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::post('/dang-nhap', [AuthController::class, 'login'])->name('login');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/', [HomePageController::class, 'index'])->name('home');
+    Route::get('/dang-xuat', [AuthController::class, 'logout'])->name('logout');
 });
+
