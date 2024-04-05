@@ -24,6 +24,16 @@
 
     <!-- Theme JS files -->
     <script type="text/javascript" src="{{asset('js/core/app.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/plugins/forms/selects/select2.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/plugins/forms/styling/uniform.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/pages/form_layouts.js')}}"></script>
+    <script>
+        var msg = '{{\Illuminate\Support\Facades\Session::get('alert')}}';
+        var exist = '{{\Illuminate\Support\Facades\Session::has('alert')}}';
+        if(exist){
+            alert(msg);
+        }
+    </script>
     <!-- /theme JS files -->
 
 </head>
@@ -80,3 +90,4 @@
 
 </body>
 </html>
+

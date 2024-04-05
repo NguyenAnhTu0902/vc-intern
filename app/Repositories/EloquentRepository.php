@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Constants\Constant;
 use App\Helpers\CommonHelper;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
@@ -387,4 +388,36 @@ abstract class EloquentRepository implements RepositoryInterface
 
         return $this;
     }
+
+    /**
+     * Handle data paginate
+     *
+     * @param array $data
+     *
+     * @return array
+     */
+    public function handlePaginate($data)
+    {
+        $page[Constant::INPUT_PAGE_SIZE] = 10;
+        $page[Constant::INPUT_PAGE] =  1;
+        if (!empty($data[Constant::KEY_LIMIT])) {
+            $page[Constant::INPUT_PAGE_SIZE] = $data[Constant::KEY_LIMIT];
+        }
+        if (isset($data[Constant::INPUT_PAGE])) {
+            $pageNumber = (int)$data[Constant::INPUT_PAGE];
+            $page[Constant::INPUT_PAGE] = $pageNumber;
+        }
+        return $page;
+    }
+
+    protected function paginate(Builder $query, array $pagination)
+    {
+        return $query->paginate(
+            $pagination[Constant::INPUT_PAGE_SIZE],
+            '*',
+            Constant::INPUT_PAGE,
+            $pagination[Constant::INPUT_PAGE]
+        );
+    }
+
 }

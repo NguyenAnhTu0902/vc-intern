@@ -7,16 +7,18 @@
                 <ul class="navigation navigation-main navigation-accordion">
 
                     <!-- Main -->
-                    <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
-                    <li><a href="index.html"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+                    <li class="navigation-header"><span>Danh mục quản lý</span> <i class="icon-menu" title="Main pages"></i></li>
+                    <li><a href=""><i class="glyphicon glyphicon-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li>
+                    <li class="{{ request()->routeIs('client.index') ? 'active': '' }}" ><a href="{{route("client.index")}}"><i class="icon-user"></i> <span>Quản lý khách hàng</span></a></li>
+                    <li><a href=""><i class="icon-users"></i> <span>Quản lý nhân sự</span></a></li>
                     <li>
-                        <a href="#"><i class="icon-stack2"></i> <span>Page layouts</span></a>
+                        <a href="#"><i class="glyphicon glyphicon-lock"></i> <span>Quản lý công ty</span></a>
                         <ul>
-                            <li><a href="">Fixed navbar</a></li>
-                            <li><a href="">Fixed navbar &amp; sidebar</a></li>
-                            <li><a href="">Fixed sidebar native scroll</a></li>
+                            <li class="{{ request()->routeIs('product.index') ? 'active': '' }}"><a href="{{route("product.index")}}">Quản lý sản phẩm</a></li>
+                            <li class="{{ request()->routeIs('category.index') ? 'active': '' }}"><a href="{{route("category.index")}}">Quản lý danh mục</a></li>
                         </ul>
                     </li>
+                    <li><a href=""><i class="glyphicon glyphicon-th"></i> <span>Quản lý phân quyền</span></a></li>
                 </ul>
             </div>
         </div>
