@@ -21,7 +21,7 @@
                             <li class="{{ request()->routeIs('category.index') ? 'active': '' }}"><a href="{{route("category.index")}}">Quản lý danh mục</a></li>
                         </ul>
                     </li>
-                    @if(RoleHelper::getByRole(['Supper-admingit ']))
+                    @if(RoleHelper::getByRole(['Supper-admin']))
                     <li><a href=""><i class="glyphicon glyphicon-th"></i> <span>Quản lý phân quyền</span></a></li>
                     @endif
                 </ul>
