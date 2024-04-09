@@ -1,0 +1,42 @@
+.validate-error {
+    font-size: 80%;
+    color: #dc3545;
+}
+.text-red {
+    color:#dc3545!important
+}
+.u-width10 {
+    width: 10px;
+}
+
+.u-width45{
+    width: 45px;
+}
+
+.u-width100 {
+    width: 100px;
+}
+
+.u-width110 {
+    width: 110px;
+}
+
+.u-width150 {
+    width: 150px;
+}
+
+.u-width200 {
+    width: 200px;
+}
+
+.u-width215 {
+    width: 215px;
+}
+
+.u-width300 {
+    width: 300px;
+}
+
+.u-width400 {
+    width: 400px;
+}

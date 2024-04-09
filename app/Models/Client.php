@@ -21,12 +21,12 @@ class Client extends Model
     public function userOrders()
     {
         return $this->hasOneThrough(
-            Order::class,
             OrderDetail::class,
-            'client_id',
-            'order_id',
-            'id',
-            'id'
+            Order::class
         );
+    }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

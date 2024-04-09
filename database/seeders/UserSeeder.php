@@ -26,6 +26,15 @@ class UserSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'Admin',
+                'email' => 'admin-test@gmail.com',
+                'password' => Hash::make('admin@123'),
+                'phone' => '01234567891',
+                'address' => 'Hà Nội',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
         Schema::enableForeignKeyConstraints();
     }

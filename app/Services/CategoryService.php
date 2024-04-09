@@ -60,8 +60,8 @@ class CategoryService
     {
         DB::beginTransaction();
         try {
-            $nationalDrug = $this->categoryRepository->findOrFail($id);
-            if($nationalDrug){
+            $category = $this->categoryRepository->findOrFail($id);
+            if($category){
                 $this->categoryRepository->deleteById($id);
             }
             DB::commit();

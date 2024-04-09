@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,19 +33,59 @@ Route::middleware('auth')->group(function () {
     Route::get('/dang-xuat', [AuthController::class, 'logout'])->name('logout');
 
     Route::prefix('khach-hang')->group(function () {
-        Route::get('/', [ClientController::class, 'index'])->name('client.index');
+        Route::get('/', [ClientController::class, 'index'])->name('client.index')
+            ->middleware('permission:List-clients');;
+        Route::get('/{id?}', [ClientController::class, 'detail'])->name('client.detail')
+            ->middleware('permission:View-clients');
+        Route::delete('/{id}', [ClientController::class, 'delete'])->name('client.delete')
+            ->middleware('permission:Delete-clients');
     });
 
     Route::prefix('danh-muc')->group(function () {
-        Route::get('/', [CategoryController::class, 'index'])->name('category.index');
-        Route::get('/them-moi', [CategoryController::class, 'create'])->name('category.add');
+        Route::get('/', [CategoryController::class, 'index'])->name('category.index')
+            ->middleware('permission:List-categories');
+        Route::get('/them-moi', [CategoryController::class, 'create'])->name('category.add')
+            ->middleware('permission:Create-categories');
         Route::post('/', [CategoryController::class, 'store'])->name('category.store');
-        Route::get('/{id?}', [CategoryController::class, 'detail'])->name('category.detail');
+        Route::get('/{id?}', [CategoryController::class, 'detail'])->name('category.detail')
+            ->middleware('permission:View-categories');
         Route::put('/{id}', [CategoryController::class, 'update'])->name('category.update');
-        Route::delete('/{id}', [CategoryController::class, 'delete'])->name('category.delete');
+        Route::delete('/{id}', [CategoryController::class, 'delete'])->name('category.delete')
+            ->middleware('permission:Delete-categories');
     });
     Route::prefix('san-pham')->group(function () {
-        Route::get('/', [ProductController::class, 'index'])->name('product.index');
+        Route::get('/', [ProductController::class, 'index'])->name('product.index')
+            ->middleware('permission:List-products');
+        Route::get('/them-moi', [ProductController::class, 'create'])->name('product.add')
+            ->middleware('permission:Create-products');
+        Route::post('/', [ProductController::class, 'store'])->name('product.store');
+        Route::get('/{id?}', [ProductController::class, 'detail'])->name('product.detail')
+            ->middleware('permission:Edit-products');
+        Route::post('/{id}', [ProductController::class, 'update'])->name('product.update');
+        Route::delete('/{id}', [ProductController::class, 'delete'])->name('product.delete')
+            ->middleware('permission:Delete-products');
+    });
+    Route::prefix('don-hang')->group(function () {
+        Route::get('/', [OrderController::class, 'index'])->name('order.index')
+            ->middleware('permission:List-orders');
+        Route::get('/{id?}', [OrderController::class, 'detail'])->name('order.detail')
+            ->middleware('permission:View-orders');
+        Route::put('/{id}', [OrderController::class, 'update'])->name('order.update');
+        Route::delete('/{id}', [OrderController::class, 'delete'])->name('order.delete')
+            ->middleware('permission:Delete-orders');
+    });
+
+    Route::prefix('nhan-vien')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('user.index')
+            ->middleware('permission:List-users');
+        Route::get('/them-moi', [UserController::class, 'create'])->name('user.add')
+            ->middleware('permission:Create-users');
+        Route::post('/', [UserController::class, 'store'])->name('user.store');
+        Route::get('/{id?}', [UserController::class, 'detail'])->name('user.detail')
+            ->middleware('permission:Edit-users');
+        Route::put('/{id}', [UserController::class, 'update'])->name('user.update');
+        Route::delete('/{id}', [UserController::class, 'delete'])->name('user.delete')
+            ->middleware('permission:Delete-users');
     });
 });
 

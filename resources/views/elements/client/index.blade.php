@@ -25,35 +25,34 @@
         <table class="table datatable-basic">
             <thead>
             <tr>
-                <th>STT</th>
-                <th>Họ tên</th>
-                <th>Email</th>
-                <th>Địa chỉ</th>
-                <th>Số điện thoại</th>
-                <th class="text-center">Thao tác</th>
+                <th class=" u-width45">STT</th>
+                <th class=" u-width100">Họ tên</th>
+                <th class="u-width100">Email</th>
+                <th class="u-width100">Địa chỉ</th>
+                <th class="u-width100">Số điện thoại</th>
+                <th class=" u-width100">Thao tác</th>
             </tr>
             </thead>
             <tbody>
             @foreach($clients as $key => $value)
                 <tr>
                     <td>{{$key + $itemStart}}</td>
-                    <td><a href="#">{{$value->name}}</a></td>
+                    <td>{{$value->name}}</td>
                     <td>{{$value->email}}</td>
                     <td>{{$value->address}}</td>
-                    <td>{{$value->email}}</td>
+                    <td>{{$value->phone}}</td>
                     <td class="text-center">
-                        <ul class="icons-list">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="icon-menu9"></i>
-                                </a>
-
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="#"><i class="icon-cart"></i> Đơn hàng</a></li>
-                                    <li><a href="#"><i class=" icon-trash-alt"></i> Xóa khách hàng</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <form action="{{route('client.delete',['id'=>$value->id])}}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            @if(auth()->user()->can('View-clients'))
+                                <a class="btn btn-info btn-sm mr-3 open-edit-modal" href="{{route('client.detail',['id'=>$value->id])}}"><i class="icon-pencil"></i></a>
+                            @endif
+                            @if(auth()->user()->can('Delete-clients'))
+                                <button type="submit" style="border: 2px solid #ef3030;" class="btn btn-default btn-sm open-print-modal">
+                                    <i style="color: #ec2c2c; " class="icon-trash-alt"></i></button>
+                            @endif
+                        </form>
                     </td>
                 </tr>
             @endforeach

@@ -7,10 +7,12 @@
 
             <div class="panel-body">
                 <div class="form-group">
-                    <label>Tên danh mục:</label>
+                    <label>{{__('label.category.name')}}<span class="text-red">(*)</span>:</label>
                     <input name="name" type="text" class="form-control" placeholder="Nhập tên danh mục">
+                    @error('name')
+                    <span class="error validate-error">{{$message}}</span>
+                    @enderror
                 </div>
-
                 <div class="text-right">
                     <button type="submit" class="btn btn-primary">Tạo mới <i class="icon-arrow-right14 position-right"></i></button>
                 </div>

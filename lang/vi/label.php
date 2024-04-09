@@ -1,19 +1,22 @@
 <?php
 
 return [
-    'common' => [
-        'pagination' => [
-            'showing' => 'Hiển thị',
-            'entries' => 'bản ghi',
-            'previous' => 'Trước',
-            'next' => 'Sau'
-        ]
-    ],
     'user' => [
         'name' => 'Tên',
         'phone' => 'SĐT',
         'email' => 'Email',
         'address' => 'Địa chỉ',
         'password' => 'Mật khẩu',
+        'confirm-pass' => 'Xác nhận mật khẩu'
+    ],
+    'category' => [
+        'name' => 'Tên danh mục'
+    ],
+    'product' => [
+        'name' => 'Tên sản phẩm',
+        'price' => 'Giá sản phẩm',
+        'category_id' => 'Tên danh mục',
+        'image' => 'Hình ảnh sản phẩm',
+        'description' => 'Mô tả'
     ],
 ];

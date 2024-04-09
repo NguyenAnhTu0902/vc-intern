@@ -12,4 +12,9 @@ class OrderDetailRepository extends EloquentRepository
     {
         return OrderDetail::class;
     }
+
+    public function listDetailByOrder($id)
+    {
+        return $this->model->with('product')->where('order_id', '=', $id)->get();
+    }
 }

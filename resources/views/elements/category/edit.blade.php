@@ -8,7 +8,7 @@
 
             <div class="panel-body">
                 <div class="form-group">
-                    <label>Tên danh mục:</label>
+                    <label>Tên danh mục<span class="text-red">(*)</span>:</label>
                     <input name="name" type="text" class="form-control" placeholder="Nhập tên danh mục" value="{{$category->name}}">
                 </div>
 

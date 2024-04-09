@@ -12,4 +12,10 @@ class OrderDetailService
     {
         $this->orderDetailRepository = $orderDetailRepository;
     }
+
+    public function listDetailByOrder($id)
+    {
+        return $this->orderDetailRepository->listDetailByOrder($id);
+
+    }
 }

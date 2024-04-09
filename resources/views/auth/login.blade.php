@@ -13,6 +13,7 @@
     <link href="{{asset('css/core.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/components.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/colors.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/error.css')}}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
 
     <!-- Core JS files -->
@@ -88,21 +89,24 @@
                             <h5 class="content-group">Login to your account <small class="display-block">Enter your credentials below</small></h5>
                         </div>
                         @include('elements.messages')
+                        @error('email')
+                        <span class="error validate-error">{{$message}}</span>
+                        @enderror
                         <div class="form-group has-feedback has-feedback-left">
-                            <input value="{{ old('email') }}" type="text" class="form-control" placeholder="Email" name="email"
-                            >
+                            <input value="{{ old('email') }}" type="text" class="form-control" placeholder="Email" name="email">
                             <div class="form-control-feedback">
                                 <i class="icon-user text-muted"></i>
                             </div>
                         </div>
-
+                        @error('password')
+                        <span class="error validate-error">{{$message}}</span>
+                        @enderror
                         <div class="form-group has-feedback has-feedback-left">
                             <input name="password" id="password" type="password" class="form-control" placeholder="Password">
                             <div class="form-control-feedback">
                                 <i class="icon-lock2 text-muted"></i>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 position-right"></i></button>
                         </div>

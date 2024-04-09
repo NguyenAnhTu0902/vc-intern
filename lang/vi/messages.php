@@ -11,7 +11,7 @@ return [
     'EM-IMAGE' => ':attribute phải là hình ảnh.',
     'EM-MAXMB' => 'Dung lượng file tải lên không được quá :max MB.',
     'EM-PASS' => 'Mật khẩu không đúng',
-    'EM-CONFIRMPASS' => ':attribute không được trùng với mật khẩu cũ',
+    'EM-CONFIRM' => ':attribute không trùng với mật khẩu cũ',
     'EM-015' => 'Email hoặc mật khẩu không tồn tại trong hệ thống.',
     'EM-016' => 'Email đã tồn tại trong hệ thống!',
 

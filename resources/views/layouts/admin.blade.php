@@ -13,6 +13,7 @@
     <link href="{{asset('css/core.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/components.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/colors.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/error.css')}}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
 
     <!-- Core JS files -->

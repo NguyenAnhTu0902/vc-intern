@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Repositories\CategoryRepository;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
@@ -30,10 +31,11 @@ class CategoryController extends Controller
         return view('elements.category.add');
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        $this->categoryService->storeCategory($request);
-        return redirect()->route('category.index')->with('alert', 'Thêm mới thành công!');
+        return $this->categoryService->storeCategory($request) ?
+                redirect()->route('category.index')->with('alert', 'Thêm mới thành công!'):
+                redirect()->refresh()->with('alert', 'Xảy ra lỗi!');
     }
 
     public function detail($id)
@@ -42,15 +44,17 @@ class CategoryController extends Controller
         return view('elements.category.edit', compact('category'));
     }
 
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        $this->categoryService->updateCategory($request, $id);
-        return redirect()->route('category.index')->with('alert', 'Cập nhật thành công!');
+        return $this->categoryService->updateCategory($request, $id)?
+                redirect()->route('category.index')->with('alert', 'Cập nhật thành công!') :
+                redirect()->refresh()->with('alert', 'Xảy ra lỗi!');
     }
 
     public function delete($id)
     {
-        $this->categoryService->deleteCategory($id);
-        return redirect()->route('category.index')->with('alert', 'Xóa thành công!');
+        return $this->categoryService->deleteCategory($id)?
+            redirect()->route('category.index')->with('alert', 'Xóa thành công!') :
+            redirect()->refresh()->with('alert', 'Xảy ra lỗi!');
     }
 }
