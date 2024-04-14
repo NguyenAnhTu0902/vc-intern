@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,9 @@ Route::post('/dang-nhap', [AuthController::class, 'login'])->name('login');
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomePageController::class, 'index'])->name('home');
     Route::get('/dang-xuat', [AuthController::class, 'logout'])->name('logout');
-
+    Route::get('/thong-tin-ca-nhan', [UserController::class, 'view'])->name('user.view');
+    Route::put('/thong-tin-ca-nhan', [UserController::class, 'profile'])->name('profile');
+    Route::put('/doi-mat-khau', [UserController::class, 'changePassword'])->name('change-password');
     Route::prefix('khach-hang')->group(function () {
         Route::get('/', [ClientController::class, 'index'])->name('client.index')
             ->middleware('permission:List-clients');;
@@ -40,7 +43,6 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{id}', [ClientController::class, 'delete'])->name('client.delete')
             ->middleware('permission:Delete-clients');
     });
-
     Route::prefix('danh-muc')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('category.index')
             ->middleware('permission:List-categories');
@@ -86,6 +88,13 @@ Route::middleware('auth')->group(function () {
         Route::put('/{id}', [UserController::class, 'update'])->name('user.update');
         Route::delete('/{id}', [UserController::class, 'delete'])->name('user.delete')
             ->middleware('permission:Delete-users');
+    });
+
+    Route::middleware('role:Supper-admin')->group(function () {
+        Route::prefix('phan-quyen')->name('permission.')->group(function () {
+            Route::get('/', [PermissionController::class, 'index'])->name('index');
+            Route::get('/{id?}', [PermissionController::class, 'detail'])->name('detail');
+        });
     });
 });
 

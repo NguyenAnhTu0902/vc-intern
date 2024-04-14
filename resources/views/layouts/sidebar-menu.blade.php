@@ -22,7 +22,7 @@
                         </ul>
                     </li>
                     @if(RoleHelper::getByRole(['Supper-admin']))
-                    <li><a href=""><i class="glyphicon glyphicon-th"></i> <span>Quản lý phân quyền</span></a></li>
+                    <li class="{{ request()->routeIs('permission.index') ? 'active': '' }}"><a href="{{route('permission.index')}}"><i class="glyphicon glyphicon-th"></i> <span>Quản lý phân quyền</span></a></li>
                     @endif
                 </ul>
             </div>

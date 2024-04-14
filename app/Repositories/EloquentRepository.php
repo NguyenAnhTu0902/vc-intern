@@ -419,5 +419,9 @@ abstract class EloquentRepository implements RepositoryInterface
             $pagination[Constant::INPUT_PAGE]
         );
     }
+    public function getTable(): string
+    {
+        return $this->model->getTable();
+    }
 
 }

@@ -33,4 +33,17 @@ class OrderRepository extends EloquentRepository
         return $this->paginate($query, $this->handlePaginate($data));
     }
 
+    public function getTotalOrder()
+    {
+        return $this->model->where('status', '=', 4)->count('id');
+    }
+    public function getTotalRevenue()
+    {
+        return $this->model->where('status', '=', 4)->sum('subtotal');
+    }
+
+    public function getOrder()
+    {
+        return $this->model->orderBy('created_at', 'desc')->limit(10)->get();
+    }
 }

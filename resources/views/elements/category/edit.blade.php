@@ -10,6 +10,9 @@
                 <div class="form-group">
                     <label>Tên danh mục<span class="text-red">(*)</span>:</label>
                     <input name="name" type="text" class="form-control" placeholder="Nhập tên danh mục" value="{{$category->name}}">
+                    @error('name')
+                    <span class="error validate-error">{{$message}}</span>
+                    @enderror
                 </div>
 
                 <div class="text-right">

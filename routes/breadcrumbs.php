@@ -60,3 +60,13 @@ Breadcrumbs::for('user.add', function ($trail) {
     $trail->parent('user.index');
     $trail->push(__('Thêm nhân viên'), route('user.add'));
 });
+
+Breadcrumbs::for('user.view', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('Thông tin cá nhân'), route('user.view'));
+});
+
+Breadcrumbs::for('permission.index', function ($trail) {
+    $trail->parent('home');
+    $trail->push(__('Phân quyền'), route('permission.index'));
+});

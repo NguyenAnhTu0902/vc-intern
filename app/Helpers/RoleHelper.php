@@ -17,4 +17,18 @@ class RoleHelper
         }
         return false;
     }
+
+    /**
+     * Set array of the query input.
+     *
+     * @param string $guard
+     * @return ?string
+     */
+    public static function getEmail(string $guard = 'web'): ?string
+    {
+        if (auth($guard)->check()) {
+            return auth($guard)->user()->email;
+        }
+        return null;
+    }
 }

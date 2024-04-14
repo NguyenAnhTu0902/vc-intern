@@ -11,4 +11,10 @@ class RoleRepository extends EloquentRepository
     {
         return Role::class;
     }
+
+    public function list(array $data, $select)
+    {
+        $query = $this->model->select($select);
+        return $this->paginate($query, $this->handlePaginate($data));
+    }
 }

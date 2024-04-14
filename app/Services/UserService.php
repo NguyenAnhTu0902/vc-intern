@@ -83,4 +83,26 @@ class UserService
             return false;
         }
     }
+
+    public function profile($request)
+    {
+        DB::beginTransaction();
+        try {
+            $user = $this->userRepository->findOrFail(auth()->user()->id);
+            if($user) {
+                $user->update($request->only(
+                    'name',
+                    'email',
+                    'phone',
+                    'address'
+                ));
+            }
+            DB::commit();
+            return true;
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            Log::info($exception->getMessage());
+            return false;
+        }
+    }
 }

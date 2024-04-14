@@ -6,6 +6,7 @@ return [
         'phone' => 'SĐT',
         'email' => 'Email',
         'address' => 'Địa chỉ',
+        'old_password' => 'Mật khẩu',
         'password' => 'Mật khẩu',
         'confirm-pass' => 'Xác nhận mật khẩu'
     ],
