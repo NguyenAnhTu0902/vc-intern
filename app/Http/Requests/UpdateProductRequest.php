@@ -25,7 +25,7 @@ class UpdateProductRequest extends FormRequest
             'name' => ['required', 'max:255'],
             'category_id' => ['required'],
             'price' => ['bail', 'required', 'numeric', 'digits_between:1,10', 'regex:/^[0-9]+$/'],
-            'image' => ['image', 'max:2 * 1024'],
+            'image' => ['image', 'max:'. env('MAX_FILE_SIZE', 10240)],
             'description' => ['max: 255']
         ];
     }

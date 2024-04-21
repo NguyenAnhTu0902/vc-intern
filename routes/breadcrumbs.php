@@ -70,3 +70,7 @@ Breadcrumbs::for('permission.index', function ($trail) {
     $trail->parent('home');
     $trail->push(__('Phân quyền'), route('permission.index'));
 });
+Breadcrumbs::for('permission.detail', function ($trail) {
+    $trail->parent('permission.index');
+    $trail->push(__('Chỉnh sửa phân quyền'), route('permission.detail'));
+});

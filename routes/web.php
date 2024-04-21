@@ -94,6 +94,8 @@ Route::middleware('auth')->group(function () {
         Route::prefix('phan-quyen')->name('permission.')->group(function () {
             Route::get('/', [PermissionController::class, 'index'])->name('index');
             Route::get('/{id?}', [PermissionController::class, 'detail'])->name('detail');
+            Route::put('/set-permission/{id}', [PermissionController::class, 'setPermission'])
+                ->name('setPermission');
         });
     });
 });

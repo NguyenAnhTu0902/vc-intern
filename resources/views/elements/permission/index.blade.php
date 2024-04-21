@@ -44,7 +44,7 @@
                     <td>{{$value->created_at}}</td>
                     <td>{{$value->updated_at}}</td>
                     <td class="text-center">
-                        <a class="btn btn-info btn-sm mr-3 open-edit-modal" href=""><i class="icon-pencil"></i></a>
+                        <a class="btn btn-info btn-sm mr-3 open-edit-modal" href="{{route('permission.detail', ['id' => $value->id])}}"><i class="icon-pencil"></i></a>
                     </td>
                 </tr>
             @endforeach

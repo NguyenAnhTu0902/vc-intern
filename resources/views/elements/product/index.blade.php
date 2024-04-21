@@ -48,10 +48,10 @@
                     <td>{{$key + $itemStart}}</td>
                     <td>{{$value->name}}</td>
                     <td>
-                        <img style="width: 60px; height: 60px;" src="{{ asset('storage/products/images/'.$value->image) }}" alt="" title="">
+                        <img style="width: 60px; height: 60px;" src="{{ Storage::url('products/images/'.$value->image) }}" alt="" title="">
                     </td>
-                    <td>{{$value->category->name}}</td>
-                    <td>{{$value->price}}</td>
+                    <td>{{$value->category->name ?? ''}}</td>
+                    <td>{{$value->price}} đ</td>
                     <td>{{$value->description}}</td>
                     <td class="text-center">
                         <form action="{{route('product.delete', ['id' => $value->id])}}" method="POST">

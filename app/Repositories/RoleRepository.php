@@ -17,4 +17,13 @@ class RoleRepository extends EloquentRepository
         $query = $this->model->select($select);
         return $this->paginate($query, $this->handlePaginate($data));
     }
+
+    public function getList()
+    {
+       return $this->model->select('*')->orderBy('id', 'asc')->get();
+    }
+    public function getRole($role_id)
+    {
+        return $this->model->select('*')->whereIn('id', $role_id ?? [])->get();
+    }
 }

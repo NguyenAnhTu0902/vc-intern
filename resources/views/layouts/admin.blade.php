@@ -17,6 +17,10 @@
     <!-- /global stylesheets -->
 
     <!-- Core JS files -->
+    <script type="text/javascript" src="{{asset('js/plugins/forms/tags/tagsinput.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/plugins/forms/tags/tokenfield.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/plugins/ui/prism.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/plugins/loaders/pace.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/core/libraries/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/core/libraries/bootstrap.min.js')}}"></script>
@@ -28,6 +32,9 @@
     <script type="text/javascript" src="{{asset('js/plugins/forms/selects/select2.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/plugins/forms/styling/uniform.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/pages/form_layouts.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/pages/form_select2.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/pages/datatables_basic.js')}}"></script>
+
     <script>
         var msg = '{{\Illuminate\Support\Facades\Session::get('alert')}}';
         var exist = '{{\Illuminate\Support\Facades\Session::has('alert')}}';
@@ -88,7 +95,7 @@
 
 </div>
 <!-- /page container -->
-
+@stack('scripts')
 </body>
 </html>
 
